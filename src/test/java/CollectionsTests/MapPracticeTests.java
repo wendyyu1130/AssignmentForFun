@@ -18,26 +18,26 @@ public class MapPracticeTests {
     public void setup(){
         mapPractice = new MapPractice();
         map1 = new TreeMap<String, String>();
-        map1.put("Mario", "Mario Bros.");
+        map1.put("Burger King", "Junkfood");
         map1.put("Donkey Kong", "Donkey Kong");
         map1.put("Link", "Legend of Zelda");
         map1.put("Samus Aran", "Metroid");
         map1.put("Yoshi", "Yoshi's World");
         map1.put("Kirby", "Kirby");
-        map1.put("Fox McCloud", "Star Fox");
-        map1.put("Pikachu", "Pokemon");
-        map1.put("Luigi", "Mario Bros.");
-        map1.put("Captain Falcon", "F-Zero");
-        map1.put("Ness", "EarthBound");
-        map1.put("Jigglypuff", "Pokemon");
+        map1.put("Muffin", "Starbucks");
+        map1.put("Hot chocolate", "Starbucks");
+        map1.put("Wendy's", "Junkfood");
+        map1.put("Colin Firth", "Actor");
+        map1.put("Nadal", "Tennis");
+        map1.put("Latte", "Starbucks");
     }
 
     @Test
     public void findValueOfTest1(){
         // Given
-        String key = "Captain Falcon";
+        String key = "Nadal";
         // When
-        String expected = "F-Zero";
+        String expected = "Tennis";
         String actual = (String) mapPractice.findValueOf(map1, key);
         // Then
         Assert.assertEquals(expected, actual);
@@ -46,9 +46,9 @@ public class MapPracticeTests {
     @Test
     public void findValueOfTest2(){
         // Given
-        String key = "Pikachu";
+        String key = "Latte";
         // When
-        String expected = "Pokemon";
+        String expected = "Starbucks";
         String actual = (String) mapPractice.findValueOf(map1, key);
         // Then
         Assert.assertEquals(expected, actual);
@@ -57,7 +57,7 @@ public class MapPracticeTests {
     @Test
     public void findValueOfTest3(){
         // Given
-        String key = "Snake";
+        String key = "Black Coffee";
         // When
         String expected = null;
         String actual = (String) mapPractice.findValueOf(map1, key);
@@ -68,9 +68,9 @@ public class MapPracticeTests {
     @Test
     public void findKeysOfTest1(){
         // Given
-        String value = "Donkey Kong";
+        String value = "Actor";
         // When
-        Object[] expected = {"Donkey Kong"};
+        Object[] expected = {"Colin Firth"};
         Object[] actual = mapPractice.findKeysOf(map1, value);
         // Then
         Assert.assertArrayEquals(expected, actual);
@@ -79,7 +79,7 @@ public class MapPracticeTests {
     @Test
     public void findKeysOfTest2(){
         // Given
-        String value = "Devil May Cry";
+        String value = "Angelina";
         // When
         Object[] expected = {};
         Object[] actual = mapPractice.findKeysOf(map1, value);
@@ -90,9 +90,20 @@ public class MapPracticeTests {
     @Test
     public void findKeysOfTest3(){
         // Given
-        String value = "Pokemon";
+        String value = "Junkfood";
         // When
-        Object[] expected = {"Jigglypuff", "Pikachu"};
+        Object[] expected = {"Burger King", "Wendy's"};
+        Object[] actual = mapPractice.findKeysOf(map1, value);
+        // Then
+        Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findKeysOfTest4(){
+        // Given
+        String value = "Starbucks";
+        // When
+        Object[] expected = {"Hot chocolate", "Latte", "Muffin"};
         Object[] actual = mapPractice.findKeysOf(map1, value);
         // Then
         Assert.assertArrayEquals(expected, actual);
